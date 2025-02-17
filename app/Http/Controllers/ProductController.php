@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -25,7 +26,12 @@ class ProductController extends Controller{
     }
 
 
-    public function show(string $id) : View{
+    public function show(string $id) : View | RedirectResponse {
+
+        if((int)$id > sizeof(ProductController::$products)){
+            return redirect()->route('home.index');
+        }
+
         $viewData = [];
         $product = ProductController::$products[$id-1];
 
