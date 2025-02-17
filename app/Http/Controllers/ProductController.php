@@ -48,13 +48,20 @@ class ProductController extends Controller{
         return view('product.create')->with("viewData",$viewData);
     }
 
-    public function save(Request $request){
+    public function save(Request $request): View{
         $request->validate([
             "name" => "required",
             "price" => "required|numeric|gt:0"
         ]);
-        dd($request->all());
-    //here will be the code to call the model and save it to the database
-    }
 
+        $viewData = [];
+        $viewData["title"] = "Product created";
+        $viewData["subtitle"] = $request->input('name')." has been created successfully";
+        $viewData["product"] = $request->all();
+        
+        return view('product.success')->with("viewData",$viewData);
+        
+        // dd($request->all());
+        //here will be the code to call the model and save it to the database
+    }
 }
