@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller{
 
     public static $products = [
-        ["id"=>"1", "name"=>"TV", "description"=>"Best TV"],
-        ["id"=>"2", "name"=>"iPhone", "description"=>"Best iPhone"],
-        ["id"=>"3", "name"=>"Chromecast", "description"=>"Best Chromecast"],
-        ["id"=>"4", "name"=>"Glasses", "description"=>"Best Glasses"]
+        ["id"=>"1", "name"=>"TV", "description"=>"Best TV", "price"=>1000],
+        ["id"=>"2", "name"=>"iPhone", "description"=>"Best iPhone", "price"=>1800],
+        ["id"=>"3", "name"=>"Chromecast", "description"=>"Best Chromecast", "price"=>50],
+        ["id"=>"4", "name"=>"Glasses", "description"=>"Best Glasses", "price"=>275]
     ];
 
 
@@ -25,7 +26,11 @@ class ProductController extends Controller{
     }
 
 
-    public function show(string $id) : View{
+    public function show(string $id) : View | RedirectResponse {
+        if((int)$id > sizeof(ProductController::$products)){
+            return redirect()->route('home.index');
+        }
+
         $viewData = [];
         $product = ProductController::$products[$id-1];
 
@@ -43,13 +48,20 @@ class ProductController extends Controller{
         return view('product.create')->with("viewData",$viewData);
     }
 
-    public function save(Request $request){
+    public function save(Request $request): View{
         $request->validate([
             "name" => "required",
-            "price" => "required"
+            "price" => "required|numeric|gt:0"
         ]);
-        dd($request->all());
-    //here will be the code to call the model and save it to the database
-    }
 
+        $viewData = [];
+        $viewData["title"] = "Product created";
+        $viewData["subtitle"] = $request->input('name')." has been created successfully";
+        $viewData["product"] = $request->all();
+        
+        return view('product.success')->with("viewData",$viewData);
+        
+        // dd($request->all());
+        //here will be the code to call the model and save it to the database
+    }
 }

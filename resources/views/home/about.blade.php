@@ -10,7 +10,6 @@
         </div>
         <div class="col-lg-4 me-auto">
             <p class="lead">{{ $author }}</p>
-
         </div>
     </div>
 </div>
