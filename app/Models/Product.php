@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use App\Models\Comment;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Collection;
 
-
-class Product extends Model {
+class Product extends Model
+{
     use HasFactory;
 
     /**
@@ -19,31 +17,36 @@ class Product extends Model {
      * $this->attributes['name'] - string - contains the product name
      * $this->attributes['price'] - int - contains the product price
      * $this->comments - Comment[] - contains the associated comments
-    */
+     */
+    protected $fillable = ['name', 'price'];
 
-    protected $fillable = ['name','price'];
-
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->attributes['id'];
     }
 
-    public function setId($id) : void {
+    public function setId($id): void
+    {
         $this->attributes['id'] = $id;
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->attributes['name'];
     }
 
-    public function setName($name) : void {
+    public function setName($name): void
+    {
         $this->attributes['name'] = $name;
     }
 
-    public function getPrice(): int {
+    public function getPrice(): int
+    {
         return $this->attributes['price'];
     }
 
-    public function setPrice($price) : void {
+    public function setPrice($price): void
+    {
         $this->attributes['price'] = $price;
     }
 
@@ -62,4 +65,3 @@ class Product extends Model {
         $this->comments = $comments;
     }
 }
-?>
