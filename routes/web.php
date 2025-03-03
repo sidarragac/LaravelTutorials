@@ -31,5 +31,3 @@ Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('c
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
