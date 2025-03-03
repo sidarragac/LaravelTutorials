@@ -31,3 +31,6 @@ Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('c
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
 
 Auth::routes();
+
+Route::get('/image', 'App\Http\Controllers\ImageController@index')->name("image.index");
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
