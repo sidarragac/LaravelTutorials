@@ -14,7 +14,7 @@
                     <blockquote class="blockquote mb-0">
                         <p>Id: {{ $ninja->getId() }}</p>
                         <footer class="blockquote-footer">
-                            <cite title="Source Title">Village: {{ $ninja->getVillage() }}</cite>
+                            <cite title="Source Title">Village: {{ $ninja->getVillage() }}</cite><br>
                             @if($ninja->getVillage() == "Hoja")
                                 <cite title="Source Title" style="color: red;">
                                     Chakra: {{ $ninja->getChakra() }}
@@ -26,14 +26,6 @@
                             @endif
                         </footer>
                     </blockquote>
-                </div>
-                <div class="card-body text-center">
-                    <a 
-                        href="{{ route('ninja.show', ['id'=> $ninja->getId()]) }}" 
-                        class="btn bg-primary text-white"
-                    >
-                        + Info
-                    </a>
                 </div>
             </div>
         </div>
