@@ -34,18 +34,17 @@ Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')-
 
 Auth::routes();
 
-//Image Controller (DI)
-Route::get('/image', 'App\Http\Controllers\ImageController@index')->name("image.index");
-Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
+// Image Controller (DI)
+Route::get('/image', 'App\Http\Controllers\ImageController@index')->name('image.index');
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
 
-//Image Controller (NDI)
-Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name("imagenotdi.index");
-Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name("imagenotdi.save");
+// Image Controller (NDI)
+Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name('imagenotdi.index');
+Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name('imagenotdi.save');
 
-
-//Ninja Controller (1st Exam)
-Route::get('/ninja', $ninjaControllerRoute. 'index')->name('ninja.index');
-Route::get('/ninja/create', $ninjaControllerRoute. 'create')->name('ninja.create');
-Route::get('/ninja/stats', $ninjaControllerRoute. 'stats')->name('ninja.stats');
-Route::post('/ninja/save', $ninjaControllerRoute. 'save')->name('ninja.save');
-Route::get('/ninja/{id}', $ninjaControllerRoute. 'show')->name('ninja.show');
+// Ninja Controller (1st Exam)
+Route::get('/ninja', $ninjaControllerRoute.'index')->name('ninja.index');
+Route::get('/ninja/create', $ninjaControllerRoute.'create')->name('ninja.create');
+Route::get('/ninja/stats', $ninjaControllerRoute.'stats')->name('ninja.stats');
+Route::post('/ninja/save', $ninjaControllerRoute.'save')->name('ninja.save');
+Route::get('/ninja/{id}', $ninjaControllerRoute.'show')->name('ninja.show');

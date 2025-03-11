@@ -19,18 +19,6 @@ class NinjaController extends Controller
         return view('ninja.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View|RedirectResponse
-    {
-        $viewData = [];
-        $ninja = Ninja::findOrFail($id);
-
-        $viewData['title'] = $ninja->getName() .' - 1st Exam';
-        $viewData['subtitle'] = $ninja->getName() .' - Information';
-        $viewData['ninja'] = $ninja;
-
-        return view('ninja.show')->with('viewData', $viewData);
-    }
-
     public function create(): View
     {
         $viewData = [];
@@ -54,8 +42,8 @@ class NinjaController extends Controller
         $ninjasChakraSumatory = Ninja::sum('chakra');
 
         $viewData = [];
-        $viewData['title'] = "Statistics - 1st Exam";
-        $viewData['subtitle'] = "Ninjas Statistics";
+        $viewData['title'] = 'Statistics - 1st Exam';
+        $viewData['subtitle'] = 'Ninjas Statistics';
         $viewData['hojaVillageCount'] = $hojaVillageCount;
         $viewData['nieblaVillageCount'] = $nieblaVillageCount;
         $viewData['ninjasChakraSumatory'] = $ninjasChakraSumatory;

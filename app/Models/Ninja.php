@@ -62,7 +62,7 @@ class Ninja extends Model
         $this->attributes['chakra'] = $chakra;
     }
 
-    #This 2 functions doesn't have return type to prevent errors.
+    // This 2 functions doesn't have return type to prevent errors.
     public function getCreatedAt()
     {
         return $this->attributes['created_at'];
