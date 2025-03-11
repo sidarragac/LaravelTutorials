@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-$ninjaControllerRoute = 'App\Http\Controllers\HomeController@';
+$ninjaControllerRoute = 'App\Http\Controllers\NinjaController@';
 
 // Home Controller
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
